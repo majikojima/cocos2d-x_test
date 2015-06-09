@@ -68,8 +68,10 @@
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
 		E542AD531B0F5237005E7D9D /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E542AD511B0F5237005E7D9D /* Player.cpp */; };
+		E551F07D1B19718B00EF74E9 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = E551F07C1B19718B00EF74E9 /* fonts */; };
 		E57968B31B1747EE002D48BB /* bgm in Resources */ = {isa = PBXBuildFile; fileRef = E57968B21B1747EE002D48BB /* bgm */; };
 		E57968B51B174801002D48BB /* se in Resources */ = {isa = PBXBuildFile; fileRef = E57968B41B174801002D48BB /* se */; };
+		E57968B81B193FF8002D48BB /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E57968B61B193FF8002D48BB /* TitleScene.cpp */; };
 		E5BDB9831AA5CF9000E6DB6B /* MainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5BDB9811AA5CF9000E6DB6B /* MainScene.cpp */; };
 		E5BDB9851AA5D20B00E6DB6B /* image in Resources */ = {isa = PBXBuildFile; fileRef = E5BDB9841AA5D20B00E6DB6B /* image */; };
 /* End PBXBuildFile section */
@@ -270,8 +272,11 @@
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		E542AD511B0F5237005E7D9D /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Player.cpp; path = ../Classes/Player.cpp; sourceTree = "<group>"; };
 		E542AD521B0F5237005E7D9D /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Player.h; path = ../Classes/Player.h; sourceTree = "<group>"; };
+		E551F07C1B19718B00EF74E9 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
 		E57968B21B1747EE002D48BB /* bgm */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bgm; sourceTree = "<group>"; };
 		E57968B41B174801002D48BB /* se */ = {isa = PBXFileReference; lastKnownFileType = folder; path = se; sourceTree = "<group>"; };
+		E57968B61B193FF8002D48BB /* TitleScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; name = TitleScene.cpp; path = ../Classes/TitleScene.cpp; sourceTree = "<group>"; usesTabs = 0; };
+		E57968B71B193FF8002D48BB /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TitleScene.h; path = ../Classes/TitleScene.h; sourceTree = "<group>"; };
 		E5BDB9811AA5CF9000E6DB6B /* MainScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MainScene.cpp; path = ../Classes/MainScene.cpp; sourceTree = "<group>"; };
 		E5BDB9821AA5CF9000E6DB6B /* MainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainScene.h; path = ../Classes/MainScene.h; sourceTree = "<group>"; };
 		E5BDB9841AA5D20B00E6DB6B /* image */ = {isa = PBXFileReference; lastKnownFileType = folder; path = image; sourceTree = "<group>"; };
@@ -350,6 +355,8 @@
 				E5BDB9821AA5CF9000E6DB6B /* MainScene.h */,
 				E542AD511B0F5237005E7D9D /* Player.cpp */,
 				E542AD521B0F5237005E7D9D /* Player.h */,
+				E57968B61B193FF8002D48BB /* TitleScene.cpp */,
+				E57968B71B193FF8002D48BB /* TitleScene.h */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -384,6 +391,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				E551F07C1B19718B00EF74E9 /* fonts */,
 				1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */,
 				15AA9C4015B7EC450033D6C2 /* Classes */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
@@ -640,6 +648,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E551F07D1B19718B00EF74E9 /* fonts in Resources */,
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
@@ -689,6 +698,7 @@
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				E5BDB9831AA5CF9000E6DB6B /* MainScene.cpp in Sources */,
+				E57968B81B193FF8002D48BB /* TitleScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

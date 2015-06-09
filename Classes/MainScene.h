@@ -23,6 +23,7 @@ private:
     bool removeFruit(cocos2d::Sprite* fruit);
     void hitFruit(cocos2d::Sprite* fruit);
     void onResult();
+    void displayHitScore();
 protected:
     MainScene();
     virtual ~MainScene();
@@ -39,6 +40,7 @@ public:
     CC_SYNTHESIZE_RETAIN(Player *, _player, Player);
     CC_SYNTHESIZE(cocos2d::Vector<cocos2d::Sprite *>, _fruits, Fruits);
     CC_SYNTHESIZE(int, _score, Score);
+    CC_SYNTHESIZE(int, _scoreUpWidth, ScoreUpWidth);
     CC_SYNTHESIZE_RETAIN(cocos2d::Label *, _scoreLabel, ScoreLabel);
     CC_SYNTHESIZE(float, _second, Second);
     CC_SYNTHESIZE_RETAIN(cocos2d::Label *, _secondLabel, SecondLabel);

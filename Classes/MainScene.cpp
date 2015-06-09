@@ -7,6 +7,7 @@
 //
 
 #include "MainScene.h"
+#include "TitleScene.h"
 #include "SimpleAudioEngine.h"
 
 USING_NS_CC;
@@ -19,6 +20,7 @@ const float TIME_LIMIT_SECOND = 60;
 MainScene::MainScene()
 :_player(nullptr)
 ,_score(0)
+,_scoreUpWidth(1)
 ,_scoreLabel(NULL)
 ,_second(TIME_LIMIT_SECOND)
 ,_secondLabel(NULL)
@@ -133,18 +135,27 @@ void MainScene::update(float dt){
 }
 
 void MainScene::hitFruit(Sprite *fruit){
-    this->removeFruit(fruit);
-    _player->getState();
     if(_player->getState() == Player::PlayerState::STAND){
         this->removeFruit(fruit);
     }
     else if((_player->getState() == Player::PlayerState::HITJUMP)
             ||(_player->getState() == Player::PlayerState::WHILEJUMP)){
-        _score += 1;
+        this->displayHitScore();
+        
+        _score += _scoreUpWidth;
+        _scoreUpWidth += 1;
         _scoreLabel->setString(StringUtils::toString(_score));
         _player->setState(Player::PlayerState::HITJUMP);
         _player->jumpAction();
+        
         this->removeFruit(fruit);
+//        auto fall = MoveTo::create(0.5, Vec2(fruit->getPosition().x, 0));
+//        auto remove = CallFuncN::create([this](Node *node){
+//            auto sprite = dynamic_cast<Sprite *>(node);
+//            this->removeFruit(sprite);
+//        });
+//        auto sequence = Sequence::create(fall, remove, NULL);
+//        fruit->runAction(sequence);
     }
 }
 
@@ -183,6 +194,24 @@ bool MainScene::removeFruit(Sprite *fruit)
     return false;
 }
 
+void MainScene::displayHitScore(){
+    auto scoreUpWidthLabel = Label::createWithSystemFont(StringUtils::toString(_scoreUpWidth),
+                                                                                "Marker Felt",
+                                                                                FONT_SIZE);
+    scoreUpWidthLabel->setPosition(_player->getPosition());
+    this->addChild(scoreUpWidthLabel);
+    
+    auto move = MoveTo::create(1, Vec2(0, 0));
+    
+    auto remove = CallFuncN::create([this](Node *node){
+        auto label = dynamic_cast<Label *>(node);
+        label->removeFromParent();
+    });
+    
+    auto sequence = Sequence::create(move, remove, NULL);
+    scoreUpWidthLabel->runAction(sequence);
+}
+
 void MainScene::onResult(){
     _gameState = GameState::RESULT;
     auto winSize = Director::getInstance()->getWinSize();
@@ -195,14 +224,15 @@ void MainScene::onResult(){
                                   auto transition = TransitionFade::create(0.5, scene);
                                   Director::getInstance()->replaceScene(transition);
                               });
-//    auto titleButton =
-//        MenuItemImage::create("title_button.png",
-//                              "title_button_pressed.png",
-//                              [](Ref* ref){
-//                                  
-    //                              });
-//    auto menu = Menu::create(replayButton, titleButton, NULL);
-    auto menu = Menu::create(replayButton, NULL);
+    auto titleButton =
+        MenuItemImage::create("title_button.png",
+                              "title_button_pressed.png",
+                              [](Ref* ref){
+                                  auto scene = TitleScene::createScene();
+                                  auto transition = TransitionFade::create(0.5, scene);
+                                  Director::getInstance()->replaceScene(transition);
+                              });
+    auto menu = Menu::create(replayButton, titleButton, NULL);
     menu->alignItemsVerticallyWithPadding(15);
     menu->setPosition(Vec2(winSize.width / 2, winSize.height / 2));
     this->addChild(menu);
